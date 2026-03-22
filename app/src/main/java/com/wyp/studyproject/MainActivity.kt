@@ -1,14 +1,11 @@
 package com.wyp.studyproject
 
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.wyp.studyproject.databinding.ActivityMainBinding
-import fragment.SharedPreferenceFragment
+import fragment.StorageFragment
 import androidx.fragment.app.commit
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         binding.buttonSharedpreference.setOnClickListener {
             supportFragmentManager.commit {
-                replace(binding.aharedpreferenceFragmentContainer.id, SharedPreferenceFragment())
+                replace(binding.aharedpreferenceFragmentContainer.id, StorageFragment())
                 addToBackStack(null)
                 setReorderingAllowed(true)
             }
