@@ -131,18 +131,58 @@ class StorageFragment: Fragment() {
             songDao = database.getSongDao()
             //前面已经拿到了database和songDao
             // 增删改查
+            // 添加
+//            lifecycleScope.launch {
+//                // 查入5首歌
+//                for (i in (1..10)) {
+//                    val song = SongEntity(
+//                        id = 0,
+//                        songname = "青花瓷$i",
+//                        singer = "周杰伦$i",
+//                        time = 3000L + i * 10L
+//                    )
+//                    songDao.insertSong(song)
+//                }
+//            }
+
+            // 删除
+            val songToDelete = SongEntity(
+                id = 1,
+                songname = "青花瓷",
+                singer = "周杰伦",
+                time = 3000L
+            )
+            val songToUpdate = SongEntity(
+                id = 2,
+                songname = "hhh",
+                singer = "wyp",
+                time = 3000L
+            )
+//            lifecycleScope.launch {
+//                songDao.deleteSong(songToDelete)
+//            }
+            // 修改
+//            lifecycleScope.launch {
+//                songDao.updateSong(songToUpdate)
+//            }
+
             lifecycleScope.launch {
-                // 查入5首歌
-                for (i in (1..5)) {
-                    val song = SongEntity(
-                        id = 0,
-                        songname = "青花瓷$i",
-                        singer = "周杰伦$i",
-                        time = 3000L + i * 10L
-                    )
-                    songDao.insertSong(song)
+                val songList = songDao.selectAllSong()
+                songList.forEach {
+                    Log.d("test","${it.toString()}")
                 }
+
+                val songList1 = songDao.selectSongByName("青花瓷5")
+                songList1.forEach {
+                    Log.d("test","${it.toString()}")
+                }
+
+                songDao.deleteAllSong()
+
             }
+
+
+
 
 
         }
