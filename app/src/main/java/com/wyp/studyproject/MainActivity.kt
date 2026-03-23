@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.wyp.studyproject.databinding.ActivityMainBinding
-import fragment.StorageFragment
+import com.wyp.studyproject.fragment.StorageFragment
 import androidx.fragment.app.commit
 
 class MainActivity : AppCompatActivity() {

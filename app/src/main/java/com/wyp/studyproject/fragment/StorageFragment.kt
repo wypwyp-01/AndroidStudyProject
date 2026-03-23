@@ -1,10 +1,8 @@
-package fragment
+package com.wyp.studyproject.fragment
 
 import android.content.ContentValues
-import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteDatabase.openOrCreateDatabase
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,7 +11,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.wyp.studyproject.data.SongDao
+import com.wyp.studyproject.data.SongDatabase
+import com.wyp.studyproject.data.SongDatabaseProvider
+import com.wyp.studyproject.data.SongEntity
 import com.wyp.studyproject.databinding.SharedpreferenceTestBinding
+import kotlinx.coroutines.launch
 
 
 class StorageFragment: Fragment() {
@@ -21,6 +25,10 @@ class StorageFragment: Fragment() {
     private val mDatabaseName by lazy { requireActivity().getFilesDir().absolutePath + "/test.db" }
     lateinit var dbHelper: UserDBHelper
     lateinit var db: SQLiteDatabase
+
+    lateinit var database: SongDatabase
+
+    lateinit var songDao: SongDao
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +42,13 @@ class StorageFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // room数据库
+//        // 获取数据库
+//         database = SongDatabaseProvider.getDatabase(requireContext())
+//         // 获取Dao
+//         songDao = database.getSongDao()
+
+        // sqlite数据库
         dbHelper = UserDBHelper(requireContext())
         db = dbHelper.writableDatabase
         // 找到控件
@@ -64,7 +79,7 @@ class StorageFragment: Fragment() {
 
         binding.buttonSqliteCreate.setOnClickListener {
             // 创建  打开数据库
-            val database = requireActivity().openOrCreateDatabase(mDatabaseName,Context.MODE_PRIVATE,null)
+            val database = requireActivity().openOrCreateDatabase(mDatabaseName, MODE_PRIVATE,null)
             Toast.makeText(requireContext(),"${database.path},创建 ${if (database == null) "失败" else "成功"}",LENGTH_LONG).show()
         }
 
@@ -109,13 +124,33 @@ class StorageFragment: Fragment() {
 
 
 
+        binding.buttonRoom.setOnClickListener {
+            // 获取数据库
+            database = SongDatabaseProvider.getDatabase(requireContext())
+            // 获取Dao
+            songDao = database.getSongDao()
+            //前面已经拿到了database和songDao
+            // 增删改查
+            lifecycleScope.launch {
+                // 查入5首歌
+                for (i in (1..5)) {
+                    val song = SongEntity(
+                        id = 0,
+                        songname = "青花瓷$i",
+                        singer = "周杰伦$i",
+                        time = 3000L + i * 10L
+                    )
+                    songDao.insertSong(song)
+                }
+            }
 
+
+        }
 
 
 
 
     }
-
 
     private fun insertValue(db: SQLiteDatabase) {
         db.beginTransaction()

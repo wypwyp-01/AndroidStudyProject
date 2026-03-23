@@ -87,7 +87,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_get"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="10dp"/>
 
 
     <Button
@@ -129,6 +129,27 @@
         android:text="数据库操作：delete"
         app:layout_constraintStart_toEndOf="@id/button_sqlite_edit"
         app:layout_constraintTop_toBottomOf="@id/button_sqlite_delete" />
+
+    <View
+        android:id="@+id/splite_1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_sqlite_deit_delete"
+        android:layout_marginTop="10dp"/>
+
+
+    <Button
+        android:id="@+id/button_room"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Room"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/splite_1" />
 
 
 
