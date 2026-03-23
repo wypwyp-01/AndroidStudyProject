@@ -47,4 +47,9 @@ dependencies {
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.2"
+    // Room 最简核心依赖（3个必要项）
+    def room_version = "2.6.1" // 最新稳定版
+    implementation "androidx.room:room-runtime:$room_version" // Room 核心运行库
+    implementation "androidx.room:room-ktx:$room_version" // Kotlin 扩展（简化协程/语法）
+    annotationProcessor "androidx.room:room-compiler:$room_version" // 替换 kapt 为 annotationProcessor
 }

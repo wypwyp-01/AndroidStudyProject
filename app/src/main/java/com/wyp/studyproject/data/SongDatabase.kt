@@ -15,7 +15,7 @@ object SongDatabaseProvider {
     private var INSTANCE: SongDatabase? = null
     fun getDatabase(context: Context):SongDatabase  {
         return INSTANCE ?:synchronized(this) {
-            val instance = Room.databaseBuilder(context, SongDatabase::class.java,"song")
+            val instance = Room.databaseBuilder(context.applicationContext, SongDatabase::class.java,"song")
                 .addMigrations()
                 .fallbackToDestructiveMigration()
                 .build()
