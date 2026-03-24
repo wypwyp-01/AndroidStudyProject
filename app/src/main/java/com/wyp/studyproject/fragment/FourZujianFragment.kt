@@ -19,7 +19,7 @@ import com.wyp.studyproject.data.SongDatabaseProvider
 import com.wyp.studyproject.data.SongEntity
 import com.wyp.studyproject.databinding.FourZujianBinding
 import com.wyp.studyproject.databinding.SharedpreferenceTestBinding
-import com.wyp.studyproject.fragment.StandardReceiver.Companion.STANDARD_ACTION
+import com.wyp.studyproject.util.StandardReceiver.Companion.STANDARD_ACTION
 import kotlinx.coroutines.launch
 
 class FourZujianFragment: Fragment() {
@@ -41,8 +41,6 @@ class FourZujianFragment: Fragment() {
 
         binding.buttonBroadcast.setOnClickListener {
             // 点击按钮
-            val intent = Intent(STANDARD_ACTION)
-            requireActivity().sendBroadcast(intent)
         }
     }
 
