@@ -36,10 +36,37 @@
         android:textSize="8sp"
         app:layout_constraintStart_toEndOf="@id/button_four_zujian"
         app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/button_send_order_broadcast"
+        android:layout_width="120dp"
+        android:maxLines="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="发送接收有序广播"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@id/button_four_zujian"
+        app:layout_constraintTop_toBottomOf="@id/button_seng_broadcast" />
+    <Button
+        android:id="@+id/button_send_static_broadcast"
+        android:layout_width="110dp"
+        android:maxLines="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="发送静态广播"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="@id/button_four_zujian"
+        app:layout_constraintTop_toBottomOf="@id/button_four_zujian" />
 
-
-
-
+    <Button
+        android:id="@+id/button_change_activity"
+        android:layout_width="100dp"
+        android:maxLines="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="跳转activity"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_sharedpreference" />
 
 
 

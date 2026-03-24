@@ -12,6 +12,10 @@ import com.wyp.studyproject.databinding.ActivityMainBinding
 import com.wyp.studyproject.fragment.StorageFragment
 import androidx.fragment.app.commit
 import com.wyp.studyproject.fragment.FourZujianFragment
+import com.wyp.studyproject.util.ORDERACTION
+import com.wyp.studyproject.util.OrderABroadcastReceiver
+import com.wyp.studyproject.util.OrderBBroadcastReceiver
+import com.wyp.studyproject.util.OrderCBroadcastReceiver
 import com.wyp.studyproject.util.StandardReceiver
 import com.wyp.studyproject.util.StandardReceiver.Companion.STANDARD_ACTION
 import com.wyp.studyproject.util.TimerChangerReceiver
@@ -25,8 +29,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var timeChangeReceiver: TimerChangerReceiver
 
 
-
-
+    lateinit var orderBroadcast1: OrderABroadcastReceiver
+    lateinit var orderBroadcast2: OrderBBroadcastReceiver
+    lateinit var orderBroadcast3: OrderCBroadcastReceiver
 
 
 
@@ -64,6 +69,30 @@ class MainActivity : AppCompatActivity() {
             sendBroadcast(intent)
         }
 
+        // 发送有序广播
+        binding.buttonSendOrderBroadcast.setOnClickListener {
+            val intent = Intent(ORDERACTION).apply {
+                setPackage(packageName)
+            }
+            // 有些广播，接收广播需要权限。广播接受者如果没有权限就收不到这个广播
+            sendOrderedBroadcast(intent,null)
+        }
+
+        // 发送静态广播
+        binding.buttonSendStaticBroadcast.setOnClickListener {
+            val intent = Intent("com.wyp.studyproject.static").apply {
+                setPackage(packageName)
+            }
+            sendBroadcast(intent)
+        }
+
+        // 跳转activity
+        binding.buttonChangeActivity.setOnClickListener {
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
 
 
@@ -81,6 +110,10 @@ class MainActivity : AppCompatActivity() {
         // 注销广播接收器
         unregisterReceiver(standardReceiver)
         unregisterReceiver(timeChangeReceiver)
+
+        unregisterReceiver(orderBroadcast1)
+        unregisterReceiver(orderBroadcast2)
+        unregisterReceiver(orderBroadcast3)
     }
 
 
@@ -102,9 +135,28 @@ class MainActivity : AppCompatActivity() {
             addAction(TIMEACTION)
         }
         timeChangeReceiver = TimerChangerReceiver()
-        ContextCompat.registerReceiver(
-            this,timeChangeReceiver,timeChangeIntentFilter,ContextCompat.RECEIVER_NOT_EXPORTED
-        )
+//        ContextCompat.registerReceiver(
+//            this,timeChangeReceiver,timeChangeIntentFilter,ContextCompat.RECEIVER_NOT_EXPORTED
+//        )
+
+        // 注册有序广播接受者
+        val orderIntentFilter1 = IntentFilter().apply{
+            addAction(ORDERACTION)
+            priority = 10
+        }
+        val orderIntentFilter2 = IntentFilter().apply{ addAction(ORDERACTION)
+            priority = 5
+        }
+        val orderIntentFilter3 = IntentFilter().apply{ addAction(ORDERACTION)
+            priority = 15
+        }
+        orderBroadcast1 = OrderABroadcastReceiver()
+        orderBroadcast2 = OrderBBroadcastReceiver()
+        orderBroadcast3 = OrderCBroadcastReceiver()
+
+        ContextCompat.registerReceiver(this, orderBroadcast1, orderIntentFilter1, ContextCompat.RECEIVER_NOT_EXPORTED)
+        ContextCompat.registerReceiver(this, orderBroadcast2, orderIntentFilter2, ContextCompat.RECEIVER_NOT_EXPORTED)
+        ContextCompat.registerReceiver(this, orderBroadcast3, orderIntentFilter3, ContextCompat.RECEIVER_NOT_EXPORTED)
     }
 
 
