@@ -1,7 +1,7 @@
 package com.wyp.studyproject
 
 import org.junit.Test
-
+import kotlin.math.*
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
@@ -10,6 +10,32 @@ import org.junit.Test
 class ListTest {
     @Test
     fun main() {
+        // listText()
+        // 实用函数
+        // function()
+
+
+
+
+
+    }
+
+    fun function() {
+//        val text = readln()
+//        println(text)
+        println(2.0.pow(4.0)) // 次方
+        println(abs(-4)) // 绝对值
+        println(max(-4,2)) // 绝对值
+        println(E) // 绝对值
+        println(PI) // 绝对值
+        println(sin(PI / 2))// 三角函数
+        println(ln(4.0) / ln(2.0)) // 对数
+        println(ceil(2.3)) // 向上取整
+        println(floor(-2.3)) // 向下取整
+    }
+
+
+    fun listText() {
         // 创建可变集合
         val l1 = mutableListOf(1,2,3,4,5)
         println(l1)
@@ -60,6 +86,5 @@ class ListTest {
         list.forEachIndexed { index, string ->
             println("list[$index] = $string")
         }
-
     }
 }

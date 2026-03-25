@@ -70,7 +70,16 @@
 
 
 
-
+    <Button
+        android:id="@+id/button_test_activity"
+        android:layout_width="100dp"
+        android:maxLines="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="test activity"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
     <!-- Fragment 显示容器 -->

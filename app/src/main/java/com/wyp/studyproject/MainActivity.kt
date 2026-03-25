@@ -1,10 +1,13 @@
 package com.wyp.studyproject
 
 import android.annotation.SuppressLint
+import android.content.ComponentName
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -40,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("test","MainActivity onCreate")
         enableEdgeToEdge()
         binding = ActivityMainBinding .inflate(layoutInflater)
         val view = binding.root
@@ -88,8 +92,30 @@ class MainActivity : AppCompatActivity() {
 
         // 跳转activity
         binding.buttonChangeActivity.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
+            // 显式意图 - 在Intent的构造函数中指定。
+            // val intent = Intent(this, SecondActivity::class.java)
+
+            // 显式意图
+//            val intent = Intent()
+//            intent.setClass(this,SecondActivity::class.java)
+            val component = ComponentName(this,SecondActivity::class.java)
+            val intent = Intent().apply{
+                setComponent(component)
+            }
             startActivity(intent)
+
+        }
+
+
+
+
+
+
+
+
+
+        binding.buttonTestActivity.setOnClickListener {
+            Toast.makeText(this,"test activity",LENGTH_LONG).show()
         }
 
 
@@ -101,15 +127,39 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        Log.d("test","MainActivity onStart")
         broadCastReceiverTest()
 
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        Log.d("test","MainActivity onRestart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("test","MainActivity onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("test","MainActivity onPause")
+    }
+
     override fun onStop() {
         super.onStop()
+        Log.d("test","MainActivity onStop")
+
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("test","MainActivity onDestroy")
         // 注销广播接收器
         unregisterReceiver(standardReceiver)
-        unregisterReceiver(timeChangeReceiver)
+        // unregisterReceiver(timeChangeReceiver)
 
         unregisterReceiver(orderBroadcast1)
         unregisterReceiver(orderBroadcast2)
