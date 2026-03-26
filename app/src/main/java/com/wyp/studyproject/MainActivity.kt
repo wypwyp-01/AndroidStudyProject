@@ -4,11 +4,15 @@ import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.view.View.VISIBLE
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.wyp.studyproject.databinding.ActivityMainBinding
@@ -48,6 +52,37 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding .inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+
+        val launcher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val data = result.data
+                val bundle = data?.extras
+                val height = bundle?.getDouble("response_height",0.0) ?: 0.0
+                val age = bundle?.getInt("response_age",0) ?: 0
+                val name = bundle?.getString("response_name","") ?: ""
+                val info = data?.getIntExtra("info",0) ?: 0
+                binding.textReceiveBundle.text = "name:$name\nage:$age\nheight:$height\ninfo:$info"
+                binding.textReceiveBundle.visibility = VISIBLE
+            }
+        }
+
+        // 包管理器可以获取应用程序相关的信息
+        // 从ContextWrapper获取包管理器
+        val manager = packageManager
+        // 从包管理器获取activity的元数据信息
+        val info = manager.getActivityInfo(componentName,PackageManager.GET_META_DATA)
+        val data = info.metaData
+        val s = data.getString("weather")
+        binding.textReceiveBundle.text = "s:$s"
+        binding.textReceiveBundle.visibility = VISIBLE
+
+
+
+
+
         // 进入存储页面
         binding.buttonSharedpreference.setOnClickListener {
             supportFragmentManager.commit {
@@ -102,7 +137,17 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent().apply{
                 setComponent(component)
             }
-            startActivity(intent)
+            // 向下一个activity传递信息
+            // Intent使用Bundle对象存放待传递的数据信息。
+            val bundle = Bundle().apply{
+                putString("time","2026.03.26")
+                putInt("age",25)
+                putDouble("height",183.0)
+            }
+            intent.putExtra("extra",123)
+            intent.putExtras(bundle)
+            // startActivity(intent)
+            launcher.launch(intent)
 
         }
 

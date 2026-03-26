@@ -14,11 +14,33 @@ class SecondActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("test","SecondActivity onCreate")
+
         binding = SecondActivityBinding .inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        // 向下一个activity传递信息，获取传过来的信息
+        val bundle = intent.extras
+        val info = intent.getIntExtra("extra",567)
+        val time = bundle?.getString("time")
+        val age = bundle?.getInt("age")
+        val height = bundle?.getDouble("height")
+        binding.buttonReceiveBundle.text = "time:$time\nage:$age\nheight:$height\ninfo:$info"
+
+
+
         binding.buttonFinishActivity.setOnClickListener {
             // 结束当前activity
+            val intent = Intent().apply{
+                val bundle = Bundle().apply{
+                    putInt("response_age",987)
+                    putString("response_name","name")
+                    putDouble("response_height",198.0)
+                }
+                putExtra("info",123)
+                putExtras(bundle)
+            }
+            setResult(RESULT_OK,intent)
             finish()
         }
 
