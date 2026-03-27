@@ -39,7 +39,7 @@ class FourZujianFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.buttonBroadcast.setOnClickListener {
+        binding.button.setOnClickListener {
             // 点击按钮
         }
     }
