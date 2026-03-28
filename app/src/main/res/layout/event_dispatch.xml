@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <!-- 顶部区域 -->
+    <LinearLayout
+        android:id="@+id/layout_top"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:orientation="vertical"
+        android:background="#DDDDDD"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btn_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Top Button"/>
+
+        <TextView
+            android:id="@+id/tv_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Top TextView"/>
+    </LinearLayout>
+
+
+    <!-- 中间覆盖布局 -->
+    <FrameLayout
+        android:id="@+id/layout_middle"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:background="#AAAAAA"
+        app:layout_constraintTop_toBottomOf="@id/layout_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 背景图 -->
+        <ImageView
+            android:id="@+id/img_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#8888FF"/>
+
+        <!-- 浮动按钮（覆盖在 ImageView 上面） -->
+        <Button
+            android:id="@+id/btn_float"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Float Button"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+
+
+    <!-- 可滑动区域 -->
+    <ScrollView
+        android:id="@+id/scroll_area"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#EEEEEE"
+        app:layout_constraintTop_toBottomOf="@id/layout_middle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/layout_scroll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Scroll TextView"
+                android:background="#FFCCCC"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="#CCFFCC"/>
+
+            <Button
+                android:id="@+id/btn_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bottom Button"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
