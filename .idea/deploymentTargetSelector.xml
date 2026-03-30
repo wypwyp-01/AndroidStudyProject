@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="EventDistributeActivity">
+      <SelectionState runConfigName="MyFlowLayoutActivity (1)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="EventDistributeActivity (1)">
+      <SelectionState runConfigName="MyFlowLayoutActivity (3)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="EventDistributeActivity (3)">
+      <SelectionState runConfigName="MyFlowLayoutActivity (5)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="EventDistributeActivity (4)">
+      <SelectionState runConfigName="MyFlowLayoutActivity">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="EventDistributeActivity (5)">
+      <SelectionState runConfigName="MyFlowLayoutActivity (4)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
