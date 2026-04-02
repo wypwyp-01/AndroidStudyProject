@@ -1,6 +1,8 @@
 package com.wyp.studyproject
 
+import com.google.gson.Gson
 import org.junit.Test
+import java.sql.DriverManager
 import kotlin.math.*
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -13,12 +15,42 @@ class ListTest {
         // listText()
         // 实用函数
         // function()
+        gsontest()
+
 
 
 
 
 
     }
+
+
+    fun gsontest() {
+        val u1 = User()
+        val g = Gson()
+
+        val json1 = g.toJson(u1)
+        println(json1)
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     fun function() {
 //        val text = readln()

@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MyFlowLayoutActivity (1)">
+      <SelectionState runConfigName="InternetActivity (3)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MyFlowLayoutActivity (3)">
+      <SelectionState runConfigName="InternetActivity (2)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MyFlowLayoutActivity (5)">
+      <SelectionState runConfigName="InternetActivity (4)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MyFlowLayoutActivity">
+      <SelectionState runConfigName="InternetActivity (5)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MyFlowLayoutActivity (4)">
+      <SelectionState runConfigName="InternetActivity">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

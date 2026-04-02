@@ -71,6 +71,9 @@ class EventDistributeActivity: AppCompatActivity() {
         }
 
 
+        buttonTop?.setOnClickListener {
+
+        }
 
 
 
