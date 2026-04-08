@@ -5,10 +5,65 @@ import org.junit.Test
 
 
 
+val a : String = "aaa"
+var b: Int = 0
+    get(): Int {
+        return field * 10
+    }
+    set(value) {
+        field = value * 3
+    }
+
 
 class FunctionTest {
     @Test
     fun main() {
+//
+//        println(a)
+//        testVal()
+//        println(testDigui(5))
+        testinline() {
+            println(it.length)
+        }
+    }
+    inline fun testinline(func: (s: String)-> Unit) {
+        println("aaa")
+        println("bbb")
+        func("asdfg")
+    }
+
+    fun testDigui(n: Int): Int {
+        if (n <= 0) return 0
+        return n + testDigui(n - 1)
+    }
+
+    fun testVal() {
+        println(a)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    fun lambda() {
         // 函数类型的变量，只能有一个返回值，最后一行的表达式就是返回值
         val func: (String) -> Int = {s->
             s.length

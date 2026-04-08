@@ -13,7 +13,10 @@ import androidx.lifecycle.lifecycleScope
 import com.google.gson.Gson
 import com.wyp.studyproject.databinding.ActivityMainBinding
 import com.wyp.studyproject.databinding.InternetTestBinding
+import com.wyp.studyproject.util.LogInterceptor
 import com.wyp.studyproject.util.MyOkHttpClient
+import com.wyp.studyproject.util.RetrofitClient
+import com.wyp.studyproject.util.RetrofitRequest
 import com.wyp.studyproject.util.Util
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,6 +27,7 @@ import okhttp3.FormBody
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
 import java.io.File
@@ -32,13 +36,14 @@ import java.io.IOException
 class InternetActivity: AppCompatActivity() {
     private lateinit var binding: InternetTestBinding
 
-    val okHttpClient = OkHttpClient()
+    lateinit var okHttpClient: OkHttpClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = InternetTestBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        okHttpClient = OkHttpClient.Builder().addInterceptor(LogInterceptor()).build()
         if (!Util.checkPermission(this)) {
             ActivityCompat.requestPermissions(
                 this,
@@ -60,6 +65,30 @@ class InternetActivity: AppCompatActivity() {
 
         binding.buttonFileUpload.setOnClickListener {
             fileUpload()
+        }
+
+        binding.buttonRetrofitGet.setOnClickListener {
+            lifecycleScope.launch {
+                try {
+                    val response = RetrofitClient.retrofit.testApi()
+                    binding.textReceiveOkhttp.text = response.toString()
+                } catch (e : Exception) {
+                    binding.textReceiveOkhttp.text = e.toString()
+                }
+
+            }
+
+        }
+
+        binding.buttonRetrofitPost.setOnClickListener {
+            lifecycleScope.launch {
+                try {
+                    val response = RetrofitClient.retrofit.testPost(RetrofitRequest(2,"wyp"))
+                    binding.textReceiveOkhttp.text = response.toString()
+                } catch (e : Exception) {
+                    binding.textReceiveOkhttp.text = e.toString()
+                }
+            }
         }
 
     }
@@ -101,10 +130,10 @@ private fun fileUpload() {
 }
 
     private fun testPostYibu() {
-        val requestBody = RequestBody(1)
+        val requestBody = UseridBody(1)
         val gson = Gson()
         val json = gson.toJson(requestBody)
-        val postBody = json.toRequestBody("application/json".toMediaType())
+        val postBody: RequestBody = json.toRequestBody("application/json".toMediaType())
 
 //        val formBody = FormBody.Builder()
 //            .add("title", "foo")
@@ -161,6 +190,6 @@ data class Response(
     val completed: Boolean? = null
 )
 
-data class RequestBody(
+data class UseridBody(
     val userId: Int
 )

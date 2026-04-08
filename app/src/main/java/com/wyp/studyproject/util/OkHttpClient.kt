@@ -48,10 +48,6 @@ object MyOkHttpClient {
             }
 
         }
-
-
-
-
         )
     }
 

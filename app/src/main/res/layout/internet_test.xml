@@ -47,23 +47,23 @@
         app:layout_constraintStart_toEndOf="@id/button_clear"
         app:layout_constraintTop_toBottomOf="@id/button_file_upload" />
     <Button
-        android:id="@+id/button_send_static_broadcast"
+        android:id="@+id/button_retrofit_post"
         android:layout_width="110dp"
         android:maxLines="1"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="发送静态广播"
+        android:text="retrofit post"
         android:textSize="8sp"
         app:layout_constraintStart_toStartOf="@id/button_clear"
         app:layout_constraintTop_toBottomOf="@id/button_clear" />
 
     <Button
-        android:id="@+id/button_change_activity"
+        android:id="@+id/button_retrofit_get"
         android:layout_width="100dp"
         android:maxLines="1"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:text="跳转activity"
+        android:text="retrofit get"
         android:textSize="8sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_okhttp_get" />
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_change_activity" />
+        app:layout_constraintTop_toBottomOf="@id/button_retrofit_get" />
     <TextView
         android:id="@+id/text_time"
         android:layout_width="match_parent"
