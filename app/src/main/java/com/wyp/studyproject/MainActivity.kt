@@ -2,10 +2,15 @@ package com.wyp.studyproject
 
 import android.annotation.SuppressLint
 import android.content.ComponentName
+import android.content.ContentValues
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.ServiceConnection
 import android.content.pm.PackageManager
+import android.net.Uri
+import android.nfc.Tag
 import android.os.Bundle
+import android.os.IBinder
 import android.util.Log
 import android.view.View.VISIBLE
 import android.widget.Toast
@@ -14,6 +19,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ServiceCompat.stopForeground
 import androidx.core.content.ContextCompat
 import com.wyp.studyproject.databinding.ActivityMainBinding
 import com.wyp.studyproject.fragment.StorageFragment
@@ -27,7 +33,7 @@ import com.wyp.studyproject.util.StandardReceiver
 import com.wyp.studyproject.util.StandardReceiver.Companion.STANDARD_ACTION
 import com.wyp.studyproject.util.TimerChangerReceiver
 import com.wyp.studyproject.util.TimerChangerReceiver.Companion.TIMEACTION
-
+import com.wyp.studyproject.data.TagInfo
 class MainActivity : AppCompatActivity() {
     // data binding
     private lateinit var binding: ActivityMainBinding
@@ -41,10 +47,25 @@ class MainActivity : AppCompatActivity() {
     lateinit var orderBroadcast3: OrderCBroadcastReceiver
 
 
+    private val conn = object: ServiceConnection {
+        lateinit var downloadBinder: MyBinder
+        override fun onServiceConnected(
+            name: ComponentName?,
+            service: IBinder? // 这里service指的就是倍绑定的service，来自于MyBindService的onBind方法里面返回的Binder对象
+        ) {
+            Log.d(TAG,"ServiceConnection onServiceConnected")
+            downloadBinder = service as MyBinder // 这里通过类型转换拿到binder
+            downloadBinder.startDownload()
+            downloadBinder.getProcess()
+        }
+        override fun onServiceDisconnected(name: ComponentName?) {
+            Log.d(TAG,"ServiceConnection onServiceDisconnected")
+        }
+    }
 
 
 
-
+    @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("test","MainActivity onCreate")
@@ -151,17 +172,81 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-
-
-
-
-
-
-
-
-        binding.buttonTestActivity.setOnClickListener {
-            Toast.makeText(this,"test activity",LENGTH_LONG).show()
+        binding.buttonInsert.setOnClickListener {
+            val uri = Uri.parse("content://com.example.dowmloadaweme.tagcontentprovider/tags")
+            val values = ContentValues().apply {
+                val index = (1..100).random()
+                val value = "testname$index"
+                Log.d("testContentProvider","value = $value")
+                put("name",value)
+            }
+            val cursor = contentResolver.insert(uri,values)
+            Log.d("testContentProvider","cursor = $cursor")
+            Toast.makeText(this,"保存成功",LENGTH_LONG).show()
         }
+
+        binding.buttonQuery.setOnClickListener {
+            val uri = Uri.parse("content://com.example.dowmloadaweme.tagcontentprovider/tags")
+            val cursor = contentResolver.query(uri,null,null,null,null)
+            var content = ""
+            cursor?.let {
+                while(cursor.moveToNext()) {
+                    val id = cursor.getLong(cursor.getColumnIndex("id"))
+                    val name = cursor.getString(cursor.getColumnIndex("name"))
+                    val coverPath = cursor.getString(cursor.getColumnIndex("coverPath"))
+                    val tags = TagInfo(id,name)
+                    content += tags.toString()
+                }
+            }
+            cursor?.close()
+            Log.d("testContentProvider","content = $content")
+            binding.textContentResolver.text = content
+        }
+
+        binding.buttonDelete.setOnClickListener {
+            val uri = Uri.parse("content://com.example.dowmloadaweme.tagcontentprovider/tags")
+            val rowsDeleted = contentResolver.delete(
+                uri,                // 你的URI
+                "name=?",           // where 条件
+                arrayOf("testname64")  // 条件的值
+            )
+            binding.textContentResolver.text = "删除$rowsDeleted 行数据"
+        }
+
+        binding.buttonClear.setOnClickListener {
+            binding.textContentResolver.text = ""
+        }
+        val intent = Intent(this, MyService::class.java)
+        binding.buttonService1.setOnClickListener {
+            startService(intent)
+        }
+
+        binding.buttonService2.setOnClickListener {
+            stopService(intent)
+        }
+
+        val bindintent = Intent(this, MyBindService::class.java)
+
+        binding.buttonService3.setOnClickListener {
+            bindService(bindintent,conn,BIND_AUTO_CREATE)
+        }
+        binding.buttonService4.setOnClickListener {
+            unbindService(conn)
+        }
+        val intent2 = Intent(this, MyForegroundService::class.java)
+        binding.buttonService5.setOnClickListener {
+            startService(intent2)
+        }
+        binding.buttonService6.setOnClickListener {
+            stopService(intent2)
+        }
+
+        binding.buttonService7.setOnClickListener {
+            intent2.putExtra("stop_foreground",1)
+            startService(intent2)
+        }
+
+
 
 
 

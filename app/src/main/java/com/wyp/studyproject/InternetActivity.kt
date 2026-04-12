@@ -5,6 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -63,9 +64,8 @@ class InternetActivity: AppCompatActivity() {
             binding.textReceiveOkhttp.text = ""
         }
 
-        binding.buttonFileUpload.setOnClickListener {
-            fileUpload()
-        }
+        binding.buttonFileUpload.setOnClickListener { fileUpload() }
+
 
         binding.buttonRetrofitGet.setOnClickListener {
             lifecycleScope.launch {

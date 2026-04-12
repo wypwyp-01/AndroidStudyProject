@@ -4,8 +4,15 @@
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+
+    <queries>
+        <package android:name="com.example.dowmloadaweme" />
+    </queries>
 
     <application
         android:allowBackup="true"
@@ -16,6 +23,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyProject">
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <service android:name="com.wyp.studyproject.MyBindService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service android:name="com.wyp.studyproject.MyForegroundService"
+            android:enabled="true"
+            android:exported="true"
+            android:foregroundServiceType="dataSync"
+            ></service>
+
         <receiver
             android:name=".util.BootCompletedReceiver"
             android:enabled="true"
@@ -34,21 +55,25 @@
         </receiver>
 
         <activity
-            android:name=".InternetActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data android:name="weather" android:value="晴天" />
-        </activity>
 
+            <meta-data
+                android:name="weather"
+                android:value="晴天" />
+        </activity>
         <activity
             android:name=".SecondActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MYSTUDYAPP" />
-                <category android:name="android.intent.category.DEFAULT"/>
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

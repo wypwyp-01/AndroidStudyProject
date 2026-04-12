@@ -1,5 +1,6 @@
 package com.wyp.studyproject.fragment
 
+import android.content.ContentResolver
 import android.content.ContentValues
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
@@ -39,8 +40,10 @@ class FourZujianFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.button.setOnClickListener {
+        binding.buttonQuery.setOnClickListener {
             // 点击按钮
+//            val uri = "content://com.example.dowmloadaweme.tagcontentprovider/tags"
+//            val cursor = requireActivity().contentResolver.insert(uri,values)
         }
     }
 
