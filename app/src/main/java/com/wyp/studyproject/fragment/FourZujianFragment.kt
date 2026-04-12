@@ -6,6 +6,9 @@ import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -20,11 +23,31 @@ import com.wyp.studyproject.data.SongDatabaseProvider
 import com.wyp.studyproject.data.SongEntity
 import com.wyp.studyproject.databinding.FourZujianBinding
 import com.wyp.studyproject.databinding.SharedpreferenceTestBinding
+import com.wyp.studyproject.util.MyThread
 import com.wyp.studyproject.util.StandardReceiver.Companion.STANDARD_ACTION
 import kotlinx.coroutines.launch
 
 class FourZujianFragment: Fragment() {
     private lateinit var binding: FourZujianBinding
+
+    val handler = object: Handler(Looper.getMainLooper()) {
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            when(msg.what) {
+                1->{
+                    binding.textTest.text = msg.obj as String
+                }
+                else -> {
+
+                }
+            }
+        }
+    }
+
+
+
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,11 +63,25 @@ class FourZujianFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.buttonQuery.setOnClickListener {
-            // 点击按钮
-//            val uri = "content://com.example.dowmloadaweme.tagcontentprovider/tags"
-//            val cursor = requireActivity().contentResolver.insert(uri,values)
+        binding.buttonMainThread.setOnClickListener {
+            var str = ""
+            for (i in (1..100)) {
+                str += "字符串$i"
+            }
+            Thread.sleep(3000)
+            binding.textTest.text = str
         }
+
+        binding.buttonSonThread.setOnClickListener {
+            val thread = MyThread(handler)
+
+            thread.start()
+
+        }
+
+
+
+
     }
 
 
