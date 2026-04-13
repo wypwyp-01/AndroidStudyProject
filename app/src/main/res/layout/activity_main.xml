@@ -197,7 +197,31 @@
         app:layout_constraintTop_toBottomOf="@id/button_service3" />
 
 
+    <Button
+        android:id="@+id/button_toast1"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="toast1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_service5" />
+    <Button
+        android:id="@+id/button_toast2"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="toast2"
+        app:layout_constraintStart_toEndOf="@id/button_service5"
+        app:layout_constraintTop_toBottomOf="@id/button_service5" />
 
+    <Button
+        android:id="@+id/button_toast3"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="toast3"
+        app:layout_constraintStart_toEndOf="@id/button_service6"
+        app:layout_constraintTop_toBottomOf="@id/button_service5" />
 
 
 

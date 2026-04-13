@@ -12,7 +12,10 @@ import android.nfc.Tag
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View.VISIBLE
+import android.widget.ImageView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.activity.enableEdgeToEdge
@@ -69,6 +72,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("test","MainActivity onCreate")
+        Log.e("test","错误信息")
+        Log.i("test","信息信息")
+        Log.w("test","警告信息")
+        Log.v("test","无用信息")
         enableEdgeToEdge()
         binding = ActivityMainBinding .inflate(layoutInflater)
         val view = binding.root
@@ -244,6 +251,31 @@ class MainActivity : AppCompatActivity() {
         binding.buttonService7.setOnClickListener {
             intent2.putExtra("stop_foreground",1)
             startService(intent2)
+        }
+
+        binding.buttonToast1.setOnClickListener {
+            Toast.makeText(this,"普通Toast",LENGTH_LONG).show()
+        }
+        binding.buttonToast2.setOnClickListener {
+            val image = ImageView(this).apply{
+                setImageResource(R.drawable.small_icon_rain)
+
+            }
+            val toast = Toast(this).apply{
+                setView(image)
+                setGravity(Gravity.CENTER,0,0)
+                duration = LENGTH_LONG
+            }
+            toast.show()
+        }
+        binding.buttonToast3.setOnClickListener {
+            val view = LayoutInflater.from(this).inflate(R.layout.toast_layout, null)
+            val toast = Toast(this).apply{
+                setView(view)
+                setGravity(Gravity.CENTER,0,0)
+                duration = LENGTH_LONG
+            }
+            toast.show()
         }
 
 
