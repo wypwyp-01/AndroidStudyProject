@@ -37,6 +37,8 @@ import com.wyp.studyproject.util.StandardReceiver.Companion.STANDARD_ACTION
 import com.wyp.studyproject.util.TimerChangerReceiver
 import com.wyp.studyproject.util.TimerChangerReceiver.Companion.TIMEACTION
 import com.wyp.studyproject.data.TagInfo
+import com.wyp.studyproject.util.MyApplication
+
 class MainActivity : AppCompatActivity() {
     // data binding
     private lateinit var binding: ActivityMainBinding
@@ -65,6 +67,7 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG,"ServiceConnection onServiceDisconnected")
         }
     }
+    val mApp = MyApplication.getInstance()
 
 
 
@@ -77,6 +80,7 @@ class MainActivity : AppCompatActivity() {
         Log.w("test","警告信息")
         Log.v("test","无用信息")
         enableEdgeToEdge()
+        applicationTest() // Application 存数据，在
         binding = ActivityMainBinding .inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -253,30 +257,7 @@ class MainActivity : AppCompatActivity() {
             startService(intent2)
         }
 
-        binding.buttonToast1.setOnClickListener {
-            Toast.makeText(this,"普通Toast",LENGTH_LONG).show()
-        }
-        binding.buttonToast2.setOnClickListener {
-            val image = ImageView(this).apply{
-                setImageResource(R.drawable.small_icon_rain)
 
-            }
-            val toast = Toast(this).apply{
-                setView(image)
-                setGravity(Gravity.CENTER,0,0)
-                duration = LENGTH_LONG
-            }
-            toast.show()
-        }
-        binding.buttonToast3.setOnClickListener {
-            val view = LayoutInflater.from(this).inflate(R.layout.toast_layout, null)
-            val toast = Toast(this).apply{
-                setView(view)
-                setGravity(Gravity.CENTER,0,0)
-                duration = LENGTH_LONG
-            }
-            toast.show()
-        }
 
 
 
@@ -328,7 +309,13 @@ class MainActivity : AppCompatActivity() {
         unregisterReceiver(orderBroadcast3)
     }
 
-
+    private fun applicationTest() {
+        mApp.userAge = 19
+        mApp.userName = "w"
+        mApp.infoMap.put("grade",99.0)
+        mApp.infoMap.put("address","tianjin")
+        mApp.infoMap.put("isAdult",true)
+    }
 
     private fun broadCastReceiverTest() {
         // 注册自定义广播

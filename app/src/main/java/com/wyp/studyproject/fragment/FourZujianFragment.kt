@@ -23,6 +23,8 @@ import com.wyp.studyproject.data.SongDatabaseProvider
 import com.wyp.studyproject.data.SongEntity
 import com.wyp.studyproject.databinding.FourZujianBinding
 import com.wyp.studyproject.databinding.SharedpreferenceTestBinding
+import com.wyp.studyproject.util.L
+import com.wyp.studyproject.util.MyApplication
 import com.wyp.studyproject.util.MyThread
 import com.wyp.studyproject.util.StandardReceiver.Companion.STANDARD_ACTION
 import kotlinx.coroutines.launch
@@ -45,6 +47,9 @@ class FourZujianFragment: Fragment() {
     }
 
 
+    val mApp = MyApplication.getInstance()
+
+
 
 
 
@@ -63,6 +68,7 @@ class FourZujianFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+
         binding.buttonMainThread.setOnClickListener {
             var str = ""
             for (i in (1..100)) {
@@ -77,6 +83,19 @@ class FourZujianFragment: Fragment() {
 
             thread.start()
 
+        }
+
+        binding.buttonDelete.setOnClickListener {
+            binding.textTest.text = ""
+        }
+
+        binding.buttonApplication.setOnClickListener {
+            val str = "${mApp.userAge.toString()}\n${mApp.userName}\n${mApp.infoMap.get("grade")}\n${
+                mApp.infoMap.get(
+                    "isAdult"
+                )
+            }\n${mApp.infoMap.get("address")}"
+            binding.textTest.text = str
         }
 
 

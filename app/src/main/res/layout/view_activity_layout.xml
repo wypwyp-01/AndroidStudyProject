@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button_toast1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="toast1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_toast2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="toast2"
+        app:layout_constraintStart_toEndOf="@id/button_toast1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_toast3"
+        android:layout_width="100dp"
+        android:maxLines="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="toast3"
+        app:layout_constraintStart_toEndOf="@id/button_toast2"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/button_send_order_broadcast"
+        android:layout_width="120dp"
+        android:maxLines="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="发送接收有序广播"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@id/button_toast2"
+        app:layout_constraintTop_toBottomOf="@id/button_toast3" />
+    <Button
+        android:id="@+id/button_send_static_broadcast"
+        android:layout_width="110dp"
+        android:maxLines="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="发送静态广播"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="@id/button_toast2"
+        app:layout_constraintTop_toBottomOf="@id/button_toast2" />
+
+    <Button
+        android:id="@+id/button_change_activity"
+        android:layout_width="100dp"
+        android:maxLines="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="跳转activity"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_toast1" />
+
+
+
+    <Button
+        android:id="@+id/button_test_activity"
+        android:layout_width="100dp"
+        android:maxLines="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="test activity"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+
+    <Button
+        android:id="@+id/button_query"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="查询"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_receive_bundle" />
+
+    <Button
+        android:id="@+id/button_insert"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="插入"
+        app:layout_constraintStart_toEndOf="@id/button_query"
+        app:layout_constraintTop_toTopOf="@id/button_query" />
+
+    <Button
+        android:id="@+id/button_delete"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="删除"
+        app:layout_constraintStart_toEndOf="@id/button_insert"
+        app:layout_constraintTop_toTopOf="@id/button_query" />
+    <Button
+        android:id="@+id/button_clear"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="清空"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_query" />
+
+    <TextView
+        android:id="@+id/text_content_resolver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/button_clear"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+    <TextView
+        android:id="@+id/text_receive_bundle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_change_activity" />
+
+    <Button
+        android:id="@+id/button_service1"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_content_resolver" />
+
+    <Button
+        android:id="@+id/button_service2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="stop"
+        app:layout_constraintStart_toEndOf="@id/button_query"
+        app:layout_constraintTop_toTopOf="@id/button_service1" />
+
+    <Button
+        android:id="@+id/button_service3"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="bind"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_service1" />
+    <Button
+        android:id="@+id/button_service4"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="unbind"
+        app:layout_constraintStart_toEndOf="@id/button_service3"
+        app:layout_constraintTop_toBottomOf="@id/button_service1" />
+
+    <Button
+        android:id="@+id/button_service5"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="启动前台"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_service3" />
+    <Button
+        android:id="@+id/button_service6"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="结束服务"
+        app:layout_constraintStart_toEndOf="@id/button_service5"
+        app:layout_constraintTop_toBottomOf="@id/button_service3" />
+
+    <Button
+        android:id="@+id/button_service7"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="结束前台状态"
+        app:layout_constraintStart_toEndOf="@id/button_service6"
+        app:layout_constraintTop_toBottomOf="@id/button_service3" />
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
