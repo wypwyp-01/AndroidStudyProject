@@ -1,5 +1,7 @@
 package com.wyp.studyproject
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.Gravity
@@ -8,12 +10,14 @@ import android.widget.ImageView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.wyp.studyproject.databinding.ActivityMainBinding
 import com.wyp.studyproject.databinding.ViewActivityLayoutBinding
 
 class ViewActivity: AppCompatActivity() {
     private lateinit var binding: ViewActivityLayoutBinding
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -45,6 +49,7 @@ class ViewActivity: AppCompatActivity() {
             }
             toast.show()
         }
+
 
 
 

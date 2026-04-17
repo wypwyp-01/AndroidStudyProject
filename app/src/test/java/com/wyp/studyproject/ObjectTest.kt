@@ -86,7 +86,6 @@ fun type(s: Student) {
 
 
 
-
 open class Student(var name: String = "",var age: Int = 0): Any() {
     constructor(name: String,grade: Float): this(name,0) {
         this.grade = grade

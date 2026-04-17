@@ -2,12 +2,15 @@ package com.wyp.studyproject
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.wyp.studyproject.databinding.CoroutineActivityLayoutBinding
 import com.wyp.studyproject.util.MyApplication
 import com.wyp.studyproject.util.L as L
 import com.wyp.studyproject.util.L.log as P
 import com.wyp.studyproject.util.RetrofitClient
+import com.wyp.studyproject.viewmodel.CoroutineViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.MainScope
@@ -19,6 +22,14 @@ import kotlinx.coroutines.withContext
 class CoroutineActivity: AppCompatActivity() {
     private lateinit var binding: CoroutineActivityLayoutBinding
     private val mainScope = MainScope() // MainScope是一个函数，但是是大写开头，工厂模式
+    private val vm: CoroutineViewModel by viewModels()
+
+
+
+
+
+
+
 
 
 
@@ -76,6 +87,24 @@ class CoroutineActivity: AppCompatActivity() {
                     e.printStackTrace()
                 }
             }
+        }
+        binding.buttonCoroutineBegin.setOnClickListener {
+            vm.getUser()
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        vm.userLiveData.observe(this) {user->
+            binding.textReceiveBundle.text = user.toString()
         }
 
 
