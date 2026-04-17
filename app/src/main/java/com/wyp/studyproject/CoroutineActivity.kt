@@ -13,9 +13,11 @@ import com.wyp.studyproject.viewmodel.CoroutineViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.async
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
 class CoroutineActivity: AppCompatActivity() {
@@ -89,8 +91,26 @@ class CoroutineActivity: AppCompatActivity() {
         }
         binding.buttonCoroutineBegin.setOnClickListener {
             vm.getUser()
-
         }
+
+        binding.buttonLaunch.setOnClickListener {
+            runBlocking {
+                val job1 = launch {
+                    delay(2000)
+                    L.d("job1 launch finished")
+                }
+
+                val job2 = async {
+                    delay(4000)
+                    L.d("job2 async finished")
+                    "job2 result"
+                }
+
+                // L.d(job2.await())
+            }
+        }
+
+        
 
 
 

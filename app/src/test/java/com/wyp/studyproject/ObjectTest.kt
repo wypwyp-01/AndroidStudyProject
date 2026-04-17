@@ -94,7 +94,7 @@ open class Student(var name: String = "",var age: Int = 0): Any() {
     open var project = ""
     var isAdult: Boolean = false
     var grade: Float = 1.0f
-    lateinit var address: String
+    var address: String  = ""
     init {
         println("父类初始化")
         isAdult = if (age >= 18) true else false
@@ -137,14 +137,16 @@ open class Student(var name: String = "",var age: Int = 0): Any() {
         return true   //都没问题，那就是相等了
     }
 
-    override fun hashCode(): Int {
-        var result = 1
-        result = 31 * result + name.hashCode()
-        return result
-    }
+
 
     override fun toString(): String {
         return "Student(name='$name', age=$age, project='$project', isAdult=$isAdult, grade=$grade, address='$address')"
+    }
+
+    override fun hashCode(): Int {
+        var result = age
+        result = 31 * result + name.hashCode()
+        return result
     }
 
 }
