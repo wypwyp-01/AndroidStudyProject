@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import com.wyp.studyproject.databinding.CoroutineActivityLayoutBinding
 import com.wyp.studyproject.util.MyApplication
 import com.wyp.studyproject.util.L as L
