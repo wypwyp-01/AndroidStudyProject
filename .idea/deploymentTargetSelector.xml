@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="AdvancedViewActivity (2)">
+      <SelectionState runConfigName="StaticFragmentTestActivity">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="AdvancedViewActivity (1)">
+      <SelectionState runConfigName="StaticFragmentTestActivity (1)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="AdvancedViewActivity (3)">
+      <SelectionState runConfigName="StaticFragmentTestActivity (2)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="AdvancedViewActivity (4)">
+      <SelectionState runConfigName="StaticFragmentTestActivity (4)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="AdvancedViewActivity (5)">
+      <SelectionState runConfigName="StaticFragmentTestActivity (5)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

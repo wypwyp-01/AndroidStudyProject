@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+
+
+    <Button
+        android:id="@+id/button_to_static_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转到静态fragment"/>
+
+
+    <fragment
+        android:tag="fragment"
+        android:id="@+id/static_fragment1"
+        tools:layout="@layout/static_fragment_layout1"
+        android:name="com.wyp.studyproject.fragment.StaticFragment1"
+        class = "com.wyp.studyproject.fragment.StaticFragment1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/static_fragment2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        tools:layout="@layout/static_fragment_layout_2"
+        android:name="com.wyp.studyproject.fragment.StaticFragment2"
+        class="com.wyp.studyproject.fragment.StaticFragment2"
+        android:layout_marginTop="20dp"/>
+
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/dynamic_fragment1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"/>
+
+
+</LinearLayout>

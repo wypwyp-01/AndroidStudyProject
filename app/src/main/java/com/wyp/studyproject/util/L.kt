@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_LONG
+import android.widget.Toast.LENGTH_SHORT
 import com.wyp.studyproject.R
 
 object L {
@@ -31,7 +32,7 @@ object L {
             view.findViewById<TextView>(R.id.tv_msg).text = content
             setView(view)
             setGravity(Gravity.TOP,0,0)
-            duration = LENGTH_LONG
+            duration = LENGTH_SHORT
         }
         toast.show()
 
