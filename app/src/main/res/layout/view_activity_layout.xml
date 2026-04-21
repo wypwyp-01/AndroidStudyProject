@@ -8,137 +8,396 @@
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button_toast1"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="toast1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_toast2"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="toast2"
-        app:layout_constraintStart_toEndOf="@id/button_toast1"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button_toast3"
-        android:layout_width="100dp"
-        android:maxLines="1"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="toast3"
-        app:layout_constraintStart_toEndOf="@id/button_toast2"
-        app:layout_constraintTop_toTopOf="parent" />
-    <Button
-        android:id="@+id/button_send_order_broadcast"
-        android:layout_width="120dp"
-        android:maxLines="1"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="发送接收有序广播"
-        android:textSize="8sp"
-        app:layout_constraintStart_toEndOf="@id/button_toast2"
-        app:layout_constraintTop_toBottomOf="@id/button_toast3" />
-    <Button
-        android:id="@+id/button_send_static_broadcast"
-        android:layout_width="110dp"
-        android:maxLines="1"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="发送静态广播"
-        android:textSize="8sp"
-        app:layout_constraintStart_toStartOf="@id/button_toast2"
-        app:layout_constraintTop_toBottomOf="@id/button_toast2" />
-
-    <Button
-        android:id="@+id/button_change_activity"
-        android:layout_width="100dp"
-        android:maxLines="1"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="跳转activity"
-        android:textSize="8sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_toast1" />
 
 
+        <Button
+            android:id="@+id/button_toast1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="toast1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_toast2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="toast2"
+            app:layout_constraintStart_toEndOf="@id/button_toast1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_toast3"
+            android:layout_width="100dp"
+            android:maxLines="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="toast3"
+            app:layout_constraintStart_toEndOf="@id/button_toast2"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/button_send_order_broadcast"
+            android:layout_width="120dp"
+            android:maxLines="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="发送接收有序广播"
+            android:textSize="8sp"
+            app:layout_constraintStart_toEndOf="@id/button_toast2"
+            app:layout_constraintTop_toBottomOf="@id/button_toast3" />
+        <Button
+            android:id="@+id/button_send_static_broadcast"
+            android:layout_width="110dp"
+            android:maxLines="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="发送静态广播"
+            android:textSize="8sp"
+            app:layout_constraintStart_toStartOf="@id/button_toast2"
+            app:layout_constraintTop_toBottomOf="@id/button_toast2" />
+
+        <Button
+            android:id="@+id/button_change_activity"
+            android:layout_width="100dp"
+            android:maxLines="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="跳转activity"
+            android:textSize="8sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_toast1" />
 
 
-    <TextView
-        android:id="@+id/text_content_resolver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/button_change_activity"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
-    <LinearLayout
-        android:id="@+id/linearlayout"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_content_resolver">
+        <TextView
+            android:id="@+id/text_content_resolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/button_change_activity"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/linearlayout1"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="#FF00FF00"
-            android:gravity="top|right"
-            android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_content_resolver">
 
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/linearlayout3"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="#FF0000FF"
-                android:orientation="horizontal"></LinearLayout>
+                android:id="@+id/linearlayout1"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="#FF00FF00"
+                android:gravity="top|right"
+                android:orientation="horizontal">
 
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/linearlayout3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#FF0000FF"
+                    android:orientation="horizontal"></LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/linearlayout2"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:orientation="horizontal"></LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/linearlayout2"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:orientation="horizontal"></LinearLayout>
+        <Button
+            android:id="@+id/studybutton"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearlayout"
+            android:text="button"
+            android:textAllCaps="true"/>
 
-    </LinearLayout>
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearlayout"
-        android:text="button"/>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/linearlayout4"
-        android:background="#880000FF"
-        android:layout_width="100dp"
+        android:background="#220000FF"
+        android:layout_width="150dp"
         android:layout_height="200dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button1">
+        app:layout_constraintTop_toBottomOf="@id/studybutton">
 
 
-        
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="水平方向1"
+            android:layout_weight="2"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold|italic"
+            android:text="水平方向2"
+            android:layout_weight="2"/>
 
     </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:textColor="@color/black"
+            android:textStyle="bold|italic"
+            android:text="垂直方向1"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:textColor="@color/black"
+            android:textStyle="bold|italic"
+            android:text="垂直方向2"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearlayout4"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我可以滚动"/>
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:background="#77FAAA99">
+            </View>
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:background="#7722AA99">
+            </View>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="没有骗你吧"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <GridLayout
+        android:id="@+id/gridlayout"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:columnCount="2"
+        android:rowCount="2"
+        app:layout_constraintTop_toTopOf="@+id/linearlayout4"
+        app:layout_constraintStart_toEndOf="@+id/linearlayout4"
+        android:layout_marginStart="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="2"
+            android:layout_columnWeight="1"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:background="#55117700"
+            android:textStyle="bold|italic"
+            android:gravity="center"
+            android:text="文字1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="2"
+            android:layout_columnWeight="1"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:background="#55772277"
+            android:gravity="center"
+            android:textStyle="bold|italic"
+            android:text="文字2" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:background="#55112200"
+            android:gravity="center"
+            android:textStyle="bold|italic"
+            android:text="文字3" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="2"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:background="#55112200"
+            android:gravity="center"
+            android:textStyle="bold|italic"
+            android:text="文字4" />
+    </GridLayout>
+
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:background="#55777700"
+        android:scaleType="fitCenter"
+        android:src="@drawable/small_icon_noon_rain"
+        app:layout_constraintStart_toStartOf="@+id/gridlayout"
+        app:layout_constraintTop_toBottomOf="@+id/gridlayout" />
+
+    <ImageButton
+        android:id="@+id/imagebutton"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageview"
+        app:layout_constraintStart_toStartOf="@+id/imageview"
+        android:src="@drawable/small_icon_noon_wind"
+        android:scaleType="fitStart"
+        android:background="@drawable/ic_launcher_background"
+        android:foreground="@drawable/small_icon_rain"/>
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/imagebutton"
+        app:layout_constraintStart_toStartOf="@+id/imagebutton"
+        android:text="这是一个复选框"
+        android:checked="true"
+        android:buttonTint="#44FF0000"
+        android:layoutDirection="ltr"/>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/selectlinearlayout"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox"
+        app:layout_constraintStart_toStartOf="@+id/checkbox">
+
+    <TextView
+        android:id="@+id/switchtext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="这是一个开关"/>
+
+    <Switch
+        android:id="@+id/myswitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:trackTint="#8800FF00"
+        android:layoutDirection="ltr"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </LinearLayout>
+
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/radiolinearlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/selectlinearlayout"
+        app:layout_constraintStart_toStartOf="@+id/selectlinearlayout">
+
+        <TextView
+            android:id="@+id/radiotext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="同意吗"/>
+
+        <RadioGroup
+            android:id="@+id/isagree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/selectlinearlayout"
+            app:layout_constraintStart_toStartOf="@+id/selectlinearlayout">
+
+            <RadioButton
+                android:id="@+id/agree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="同意"/>
+
+            <RadioButton
+                android:id="@+id/disagree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="不同意"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/radiotext1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

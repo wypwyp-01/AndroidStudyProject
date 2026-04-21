@@ -1,9 +1,11 @@
 package com.wyp.studyproject
 
 import android.os.SystemClock.sleep
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -64,12 +66,16 @@ class CoroutineStartTest {
         }
         println("time = $time")
     }
+
+    /**
+     * @authorwyp
+     */
     suspend fun doOne(): Int {
         println("doOne")
         delay(1000)
         return 8
     }
-    suspend private fun doTwo(): Int {
+    private suspend fun doTwo(): Int {
         println("doTwo")
         delay(5000)
         return 5
@@ -141,6 +147,7 @@ class CoroutineStartTest {
     }
 
     @Test
+    // 协程的作用域
     fun testScopeBuilder() = runBlocking {
 
             val j1 = launch {
@@ -157,6 +164,46 @@ class CoroutineStartTest {
 
         println("testScopeBuilder")
     }
+
+    @Test
+    // 取消作用域
+    fun testCancelScope(): Unit = runBlocking {
+        // 协程作用域创建子协程
+        val scope = CoroutineScope(Dispatchers.Default)
+        scope.launch {
+            delay(2000)
+            println("job1")
+        }
+
+        scope.launch {
+            delay(2000)
+            println("job2")
+        }
+        scope.cancel()
+        println("作用域")
+        delay(2000)
+    }
+
+
+    @Test
+    // 取消兄弟协程
+    fun testCancelBrotherScope(): Unit = runBlocking {
+        // 协程作用域创建子协程
+        val scope = CoroutineScope(Dispatchers.Default)
+        val j1 = scope.launch {
+            delay(2000)
+            println("job1")
+        }
+
+        val j2 = scope.launch {
+            delay(2000)
+            println("job2")
+        }
+        j2.cancel()
+        println("作用域")
+        delay(2000)
+    }
+
 
 
 
