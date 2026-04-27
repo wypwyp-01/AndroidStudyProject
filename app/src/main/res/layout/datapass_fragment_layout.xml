@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dynamic_fragment1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffffff">
+
+    <TextView
+        android:id="@+id/text_data_pass_constructor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/text_data_pass_public_method"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="APP:"/>
+
+    <TextView
+        android:id="@+id/text_argument"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="arg"/>
+
+    <Button
+        android:id="@+id/button_send_data_to_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="通过public方法向activity传递参数"/>
+
+    <Button
+        android:id="@+id/button_send_data_to_activity_interface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="通过接口向activity传递参数"/>
+
+
+
+
+
+
+</LinearLayout>

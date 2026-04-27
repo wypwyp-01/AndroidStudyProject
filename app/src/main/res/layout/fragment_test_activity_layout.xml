@@ -1,47 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
-
-
-    <Button
-        android:id="@+id/button_to_static_fragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="跳转到静态fragment"/>
-
-
-    <fragment
-        android:tag="fragment"
-        android:id="@+id/static_fragment1"
-        tools:layout="@layout/static_fragment_layout1"
-        android:name="com.wyp.studyproject.fragment.StaticFragment1"
-        class = "com.wyp.studyproject.fragment.StaticFragment1"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <Button
+                    android:id="@+id/button_add_dynamic_fragment"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:text="添加动态fra"/>
+
+                <Button
+                    android:id="@+id/button_add_fullscreen_fragment"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:text="添加全屏fra"/>
+
+
+                <Button
+                    android:id="@+id/button_search_fragment"
+                    android:layout_width="90dp"
+                    android:layout_height="60dp"
+                    android:text="查找移除fra"/>
+
+                <Button
+                    android:id="@+id/button_replace_fragment"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:text="  替换fra"/>
+
+                <Button
+                    android:id="@+id/button_hide_fragment"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:text="隐藏fragment"/>
+
+                <Button
+                    android:id="@+id/button_show_fragment"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:text="显示fragment"/>
+
+                <Button
+                    android:id="@+id/button_detach_fragment"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:text="卸载fragment"/>
+
+                <Button
+                    android:id="@+id/button_attach_fragment"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:text="装载fragment"/>
+
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <Button
+                    android:id="@+id/button_constructor"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:text="通过构造传递"/>
+
+                <Button
+                    android:id="@+id/button_public"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:text="public方法传递"/>
+
+                <Button
+                    android:id="@+id/button_arguments"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:text="arguments传递参数"/>
+
+                <Button
+                    android:id="@+id/button_interface"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:text="接口传递参数"/>
+
+
+
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+        
+        
+
+
+
+
+
+
+
+
+
+        <fragment
+            android:tag="fragment"
+            android:id="@+id/static_fragment1"
+            tools:layout="@layout/static_fragment_layout1"
+            android:name="com.wyp.studyproject.fragment.StaticFragment1"
+            class = "com.wyp.studyproject.fragment.StaticFragment1"
+            android:layout_width="match_parent"
+            android:layout_height="130dp" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/static_fragment2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            tools:layout="@layout/static_fragment_layout_2"
+            android:name="com.wyp.studyproject.fragment.StaticFragment2"
+            class="com.wyp.studyproject.fragment.StaticFragment2"
+            android:layout_marginTop="20dp"/>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/dynamic_fragment1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"/>
+
+
+        <TextView
+            android:id="@+id/text_from_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
 
 
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/static_fragment2"
+        android:id="@+id/fullscreen_fragment1"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        tools:layout="@layout/static_fragment_layout_2"
-        android:name="com.wyp.studyproject.fragment.StaticFragment2"
-        class="com.wyp.studyproject.fragment.StaticFragment2"
-        android:layout_marginTop="20dp"/>
+        android:layout_height="match_parent" />
 
 
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/dynamic_fragment1"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="20dp"/>
 
-
-</LinearLayout>
+</FrameLayout>
