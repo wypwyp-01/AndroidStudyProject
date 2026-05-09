@@ -14,7 +14,6 @@ import com.wyp.studyproject.util.L
 
 class StaticFragmentTestActivity: AppCompatActivity() {
 
-
     lateinit var binding: FragmentTestActivityLayoutBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

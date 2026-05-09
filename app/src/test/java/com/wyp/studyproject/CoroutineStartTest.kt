@@ -4,13 +4,17 @@ import android.os.SystemClock.sleep
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.supervisorScope
+import kotlinx.coroutines.yield
 import org.junit.Test
 import kotlin.system.measureTimeMillis
 
@@ -205,7 +209,95 @@ class CoroutineStartTest {
     }
 
 
+    @Test
+    // 协程通过抛出一个特殊的异常CancellationException来处理取消操作。
+    fun testCancelException(): Unit = runBlocking{
+        val job1 = GlobalScope.launch {
+            try {
+                delay(1000)
+                println("job 1")
+            } catch (e: Exception) {
+                println(e)
+            }
+        }
+        delay(100)
+        println("job 2")
+        job1.cancel()// cancel 会抛一个异常
+        job1.join()
+    }
 
+
+    @Test
+    fun testIsactive()  = runBlocking{
+        val startTime = System.currentTimeMillis()
+        val job = launch(Dispatchers.Default) {
+            var nextPrintTime = startTime
+            var i = 0
+            while (i < 5 && isActive) {
+                if (System.currentTimeMillis() >= nextPrintTime) {
+                    println("job: i am sleeping ,${i++}")
+                    nextPrintTime += 500
+                }
+            }
+        }
+        delay(1300)
+        println("main")
+        job.cancel()
+        println("main cancel")
+        job.join()
+    }
+
+
+    @Test
+    fun testEnsureactive()  = runBlocking{
+        val startTime = System.currentTimeMillis()
+        val job = launch(Dispatchers.Default) {
+            try {
+                var nextPrintTime = startTime
+                var i = 0
+                while (i < 5) {
+                    ensureActive()
+                    if (System.currentTimeMillis() >= nextPrintTime) {
+                        println("job: i am sleeping ,${i++}")
+                        nextPrintTime += 500
+                    }
+                }
+            } catch (e: Exception) {
+                println("主动取消,$e")
+            }
+        }
+        delay(1300)
+        println("main")
+        job.cancel()
+        println("main cancel")
+        job.join()
+    }
+
+
+    @Test
+    fun testYield()  = runBlocking{
+        val startTime = System.currentTimeMillis()
+        val job = launch(Dispatchers.Default) {
+            try {
+                var nextPrintTime = startTime
+                var i = 0
+                while (i < 5) {
+                    yield()
+                    if (System.currentTimeMillis() >= nextPrintTime) {
+                        println("job: i am sleeping ,${i++}")
+                        nextPrintTime += 500
+                    }
+                }
+            } catch (e: Exception) {
+                println("主动取消,$e")
+            }
+        }
+        delay(1300)
+        println("main")
+        job.cancel()
+        println("main cancel")
+        job.join()
+    }
 
 
 

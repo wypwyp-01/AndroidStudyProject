@@ -119,4 +119,11 @@ class ListTest {
             println("list[$index] = $string")
         }
     }
+
+
+
+    @Test
+    fun testListFun() {
+
+    }
 }
